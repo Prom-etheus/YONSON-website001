@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YONSON银山设计事务所</title>
+    <style>
+     /* 悬浮文字通用样式 */
+     .fixed-text {
+        position: fixed; /* 固定定位 */
+        /* background-color: rgba(0, 0, 0, 0.7); 背景色（半透明） */
+        color: rgb(0, 0, 0); /* 文字颜色 */
+        font-size: 30px; /* 文字大小 */
+        text-shadow: 1px 1px 1.5px rgb(60, 62, 64);
+        z-index: 1000; /* 确保文字在最上层 */
+     }
+     /* 左上角悬浮文字样式 */
+     .top-left {
+        top: 10%; /* 距离顶部10px */
+        left: 7%; /* 距离左侧10px */
+     } 
+     .top-audio {
+        position: absolute;
+        top:10px;
+        right:10px;
+        opacity: 0.5;
+        z-index: 100;
+
+     }
+     .background-container {
+            display: flex;
+            position: relative;
+            width: 100vw;
+            height: 50vh;
+            overflow: hidden;
+            justify-content: center;
+            align-items: end;
+            background-color: #394556;
+        }
+    
+     .background-container img {
+            width: 100vw;
+            height: 50vh;
+            object-fit: cover; /* 图片覆盖整个容器 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* 将图片置于底层 */
+        }
+     .content {
+            position: relative;
+            z-index: 1; /* 内容置于图片上层 */
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 0.8vw;
+            white-space: pre-wrap;
+            
+        }
+     .letter {
+            transition: color 1s ease; /* 平滑颜色变化 */
+        }
+     .image-top {
+            mix-blend-mode: screen; /* 使用 screen 混合模式 */
+        }
+    
+     .container-1 {
+            display: flex;
+            width: 100vw;
+            height: 300px;
+            align-items: center;
+        }
+     .flex-container {
+            display: flex;
+            width: 100vw;
+            height: auto;
+            background-color: rgb(199, 197, 204);
+         }
+     .base-container{
+            display: flex;
+            width: 100vw;
+            height: auto;
+            background-color: #c74848;
+         }
+   
+    /* 容器样式 */
+     .container-按钮区 {
+            display: flex; /* 启用 Flexbox 布局 */
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: space-between; /* 按钮之间均匀分布 */
+            gap: 0px; /* 按钮之间的间距 */
+            width: auto; /* 容器宽度 */
+            align-items: center;
+            background-color: transparent;
+            padding: 1vh;
+
+        }
+     /* 按钮样式 */
+     .link-button {
+            display: inline-block;
+            width: 10vw;  
+            height: 12vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 12vh;
+            background-color: #938999;
+            color: white;
+            text-decoration: none;
+            border-radius: 4vh;
+            font-size: 2vh;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            border: none;
+            overflow: hidden;
+        }
+     .link-button:hover {
+            background-color: #586a7e;
+            color: rgb(255, 255, 255);
+            width: 20vw;
+            font-weight: bold;
+            
+            text-decoration-line: underline;
+            box-shadow: 0 0 1.4vh 0px rgb(114, 215, 235);
+            text-shadow: 0 0 10px rgba(114, 215, 235);
+        }   
+
+    
+     .shadow-img {
+        filter: drop-shadow(0.15vw 0.15vw 0.05vw rgba(0, 0, 0, 0.5));
+     }
+
+      /* 设置页面背景为金属质感的渐变效果 */
+      .jbbj {
+            /* 使用线性渐变创建背景 */
+            background: linear-gradient(145deg, #303d49, #8d959c, #e2e5e6);
+            
+            /* 将背景大小设置为200%，以便在动画中移动背景位置时产生平滑过渡 */
+            background-size: 200% 200%;
+            
+            /* 添加动画效果，动画名称为gradientAnimation，持续10秒，缓动效果，无限循环 */
+            animation: gradientAnimation 12s ease infinite;
+            
+            /* 设置页面高度为100%视口高度，确保背景覆盖整个屏幕 */
+            height: 100vh;
+            
+            /* 移除默认的页面边距 */
+            margin: 0;
+            
+            /* 让内容居中显示（可选） */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 定义动画的关键帧 */
+        @keyframes gradientAnimation {
+     0% {
+        /* 动画开始时，背景位置在左上角 */
+        background-position: 0% 50%;
+        }
+    50% {
+        /* 动画进行到一半时，背景位置移动到右下角 */
+        background-position: 100% 50%;
+        }
+    100% {
+        /* 动画结束时，背景位置回到左上角 */
+        background-position: 0% 50%;
+    }
+    }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="fixed-text top-left">YONSON</div>
+    <!-- 主图区 -->
+    <div class="background-container">
+        <!-- 背景图 -->
+        <img src="./pics/4.jpg" alt="Background Image"> 
+        <img src="./pics/7baa204dd9a126bbc91a168ecc866451c68f6f231fedee-cuyp5S_fw1200.gif" alt=" " class="content image-top" style="height: 20%;width: auto;left:50vw;top:34.3vh;justify-self: center;margin:0 auto;transform: translate(-50%, -50%);">
+        <img src="./pics/slogan1.svg" class="content shadow-img" alt=" " style="width:25%; height: auto; top:22vh;left:50vw; transform: translate(-50%,-50%);">
+        <img src="./pics/slogan2.svg" class="content " alt=" " style="width:24%; height: auto; top:28vh;left:65vw; transform: translate(-50%,-50%);filter: drop-shadow(0.1vw 0.1vw 0.05vw rgba(0, 0, 0, 0.5));">
+        <!-- 下部文字 -->
+        <div style="vertical-align: bottom;" class="content" id="textContainer">
+            Provide visual support for your project,
+            Including integrated services of design, production and construction, covering the entire process of project implementation.
+        </div>
+        <script>
+            const textContainer = document.getElementById('textContainer');
+            const text = textContainer.textContent;
+        
+            // 将每个字母包装为单独的<span>元素
+            textContainer.innerHTML = text.split('').map(char => {
+                return `<span class="letter">${char}</span>`;
+            }).join('');
+        
+            const letters = textContainer.querySelectorAll('.letter');
+            let index = 0;
+        
+            function changeColor() {
+                if (index < letters.length) {
+                    // 将字母颜色变为白色
+                    letters[index].style.color = 'rgb(85, 93, 104)';
+                    index++;
+                    setTimeout(changeColor, 100); // 控制字母变化的速度
+                } else {
+                    // 所有字母变为白色后，整体变回黑色
+                    setTimeout(() => {
+                        letters.forEach(letter => {
+                            letter.style.color = 'black';
+                        });
+                        index = 0; // 重置 index
+                        setTimeout(changeColor, 100); // 重新开始动画
+                    }, 3000); // 等待3秒后整体变回黑色
+                }
+            }
+        
+            // 开始动画
+            changeColor();
+        </script>
+
+
+
+
+        <!-- 音频播放 -->
+        <audio id="myaudio" controls autoplay loop class="top-audio">
+            <source src="./sounds/back-789421__ilariio__whispers-of-tranquility.mp3">    
+        </audio>
+        <script> 
+        const myaudio = document.getElementById("myaudio");
+        myaudio.volume = 0.5;
+        </script>
+    </div>
+
+    <!-- 主展示区 -->
+    <!-- 上部 -->
+    <div class="base-container">
+        <!-- 左区 -->
+        <div style="width: 80%;background: linear-gradient(to right, #b4a9b6, #c6c5c7);">
+            <!-- 上 -->
+            <div class="flex-container" style="height: 5vh;justify-content: start;align-items: center;"> 
+                <p style="font-size: 1.5vh; margin-left: 7.2vw; text-align: center;color: rgb(85, 93, 104);text-decoration: underline;">案例展示 ：</p>
+            </div>
+            <!-- 中 -->
+            <div class="container-按钮区" style=" margin-left:3vw ;margin-right: 7vw;">
+                
+                <button class="link-button" id="hoverbutton2" data-url="./广告类/YONSON-广告.html">广告制建</button>
+                <button class="link-button" id="hoverbutton3" data-url="./空间类/YONSON-工装&家装.html">工装&家装</button>
+                <button class="link-button" id="hoverbutton10" data-url="./展台&展柜/YONSON-展台展柜展厅.html">展台展厅</button>                
+                <button class="link-button" id="hoverbutton5" data-url="./活动类/YONSON-活动策建.html">活动策建</button>
+                <button class="link-button" id="hoverbutton4" data-url="./影视类/YONSON-影视.html">影视摄制</button>
+            </div>
+            <!-- 下 -->
+            <div class="container-按钮区"  style=" margin-left:7vw ;margin-right: 3vw;margin-bottom: 1vh;">
+                <button class="link-button" id="hoverbutton6"data-url="./产品类/YONSON-产品&包装.html">产品&包装</button>
+                <button class="link-button" id="hoverbutton8" data-url="./VI&LOGO/YONSON-VI&logo.html">VI&logo</button>
+                <button class="link-button" id="hoverbutton9" data-url="./UI&网站/YONSON-UI&网站.html">UI&网站</button>
+                <button class="link-button" id="hoverbutton7" data-url="./平面排版类/YONSON-PPT&画册.html">PPT&各类画册</button>
+                <button class="link-button" id="hoverbutton1" data-url="./文化&艺术类/YONSON-文化&艺术.html">文化艺术</button>        
+            </div>
+
+            <audio id="clickSound" src="https://freesound.org/people/Mellau/sounds/506054/download/506054__mellau__button-click-1.wav"></audio> <!-- 点击音效 -->
+            <audio id="hoverSound" src="./sounds/hover-4.wav"></audio> <!-- 悬停音效 -->
+            
+            <script>
+                // 获取所有按钮
+                const buttons = document.querySelectorAll('.link-button');
+                const clickSound = document.getElementById('clickSound');
+                const hoverSound = document.getElementById('hoverSound');
+
+                // 设置音效音量（根据需要调整）
+                clickSound.volume = 0.5; // 点击音效音量
+                hoverSound.volume = 0.3; // 悬停音效音量        
+        
+ 
+                buttons.forEach(button => {
+                        // 悬停事件
+                      button.addEventListener('mouseover', function() {
+                        hoverSound.currentTime = 0; // 重置音频到开头
+                        hoverSound.play(); // 播放悬停音效
+                        });
+
+                        // 点击事件
+                      button.addEventListener('click', function() {
+                        clickSound.currentTime = 0; // 重置音频到开头
+                        clickSound.play(); // 播放点击音效
+
+                        // 获取按钮的 data-url 属性并跳转
+                        const url = this.getAttribute('data-url');
+                        window.location.href = url;
+                        });
+                     });
+            </script>
+        </div>
+        <!-- 右头像 -->
+        <!-- <div style="width: 20%;height: auto;background-color:rgb(90, 100, 135) ;display:flex; align-items: center; justify-content: center; flex-direction: column;opacity: 1;">
+            <img src="https://pic1.imgdb.cn/item/67c132bdd0e0a243d407bf98.jpg" style="width: 30%;border-radius: 50%;object-fit: cover;padding: 10%;">
+            <div>银山设计（湖州）有限公司</div>
+        </div> -->
+        <div style="width: 20%;display: flex;height: auto;background-color: rgb(69, 63, 101);flex-direction: column;">
+            <div style="width:100%;height: 5vh;display: flex;font-size: 1.5vh;justify-content: start;align-items: center;color: rgb(74, 117, 132);text-decoration: underline;margin-left: 1vw;">核心团队：</div>
+            <div style="width:100%;height: 10vh;display: flex;background-color: rgb(69, 63, 101);align-items: center;justify-content: center;flex-direction: column;">
+                <img src="https://pic1.imgdb.cn/item/67c855a9d0e0a243d40cdfa9.jpg"  alt="" style="width: 15.6%;border-radius: 50%;object-fit: contain;">
+                <div style="margin: 1vh;height:10%;font-size: 15px;">沈 阳</div>
+
+            </div>
+            <div style="width:100%; height:auto; display: flex;opacity: 1;">
+                <div style="width: 11%;display: flex;height: auto;background-color: rgb(69, 63, 101);"></div>
+                <div style="width: 26%;display: flex;height: 10vh;background-color: rgb(69, 63, 101);align-items: center;justify-content: center;flex-direction: column;">
+                    <img src="./pics/97d15ae3f3aa6d257f98ad558cdd9bae3acf46f196c1e-guTIA6_fw1200.gif" alt="" class="image-top" style="width: 60%;border-radius: 50%;object-fit: contain;"> 
+                    <div style="margin: 1vh;height:10%;font-size: 15px;">LARRY</div>  
+                </div>
+                <div style="width: 26%;display: flex;height: 10vh;background-color: rgb(69, 63, 101);align-items: center;justify-content: center;flex-direction: column;">
+                    <img src="https://pic1.imgdb.cn/item/67c8576cd0e0a243d40ce013.jpg" alt="" style="width: 60%;border-radius: 50%;object-fit: contain;"> 
+                    <div style="margin: 1vh;height:10%;font-size: 15px;">鲲 鹏</div>  
+                </div>
+                <div style="width: 26%;display: flex;height: 10vh;background-color: rgb(69, 63, 101);align-items: center;justify-content: center;flex-direction: column;">
+                    <img src="https://pic1.imgdb.cn/item/67c857d7d0e0a243d40ce025.jpg" alt="" style="width: 60%;border-radius: 50%;object-fit: contain;"> 
+                    <div style="margin: 1vh;height:10%;font-size: 15px;">青骨朵</div>  
+                </div>
+                <div style="width: 11%;display: flex;height: auto;background-color: rgb(69, 63, 101);"></div> 
+            </div>
+            <div style="width:100%; height:auto; display: flex;opacity: 1;">
+            
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+  
+
+    <!-- 底部栏 -->
+    <div style="display: flex; width: 100vw; align-items: center; justify-content: center;background-color: rgb(116, 116, 116); height: 13vh; margin: 0; padding: 0;" class="jbbj">
+        <P style="text-align: center; font-size: 0.25vh; color: #ffffff; white-space: pre;" >
+            银山设计（湖州）事务所<br><br>tel/wechat : (86+) 15888827598;   add : 中国浙江湖州吴兴区八里店镇318国道升山段北侧4F;<br><br>备案号:京ICP备19050599号-1
+        </P>
+    </div>
+
+</body>
+</html>
